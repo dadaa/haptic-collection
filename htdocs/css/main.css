@@ -1,0 +1,57 @@
+@font-face {
+  font-family: "Open Sans Light";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/fonts/OpenSans-Light-webfont.woff");
+}
+
+button {
+  font-family: 'Open Sans Light', Helvetica, sans-serif;  
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #eee;
+  font-family: 'Open Sans Light', Helvetica, sans-serif;  
+  font-size : 14px;
+  font-weight: 400;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  float: left;
+  margin: 1em;
+}
+
+.image {
+  width: 200px;
+}
+
+#detail {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  background-color:rgba(0, 0, 0, 0.7);
+  display: none;
+}
+
+#close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+#buttons {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  text-align: right;
+}
