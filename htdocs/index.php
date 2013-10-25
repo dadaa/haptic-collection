@@ -24,6 +24,24 @@
           <button id="next">next</button>
         </div>
       </div>
+      <div id="register-form">
+        <div>
+          <input type="text" id="uploaded-title" placeholder="title"/>
+        </div>
+        <div>
+          <div><img id="uploaded-image" /></div>
+          <div><button id="upload-image">image</button></div>
+        </div>
+        <div>
+          <div><audio id="uploaded-haptic" controls>no support browser</audio></div>
+          <div><button id="upload-haptic">haptic</button></div>
+        </div>
+        <hr/>
+        <div id="submit-container">
+          <button id="submit">append new haptic</button>
+        </div>
+        <input id="upload" name="file" type="file" />
+      </div>
     </div>
     <?php include('footer.php.inc'); ?>
   </body>
