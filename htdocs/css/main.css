@@ -30,7 +30,7 @@ li {
 }
 
 .image {
-  width: 200px;
+  height: 120px;
 }
 
 #detail {
@@ -120,4 +120,29 @@ header {
   text-align: center;
   position: relative;
   top: -25px;
+}
+
+#wait {
+  display: none;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+#progress {
+  position: relative;
+  top: 50%;
+}
+
+#progress-label {
+  color: white;
+}
+
+#progress-bar {
+  background-color: black;
+  margin: 0 100px;
 }

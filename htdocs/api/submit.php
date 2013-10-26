@@ -16,7 +16,7 @@
     file_put_contents($directory."/image.jpg", $image);
     file_put_contents($directory."/haptic.wav", $haptic);
 
-    $result["title"] = $title;
+    $result["id"] = $id;
     $result["image"] = $dataDirectoryRelational."/".$id."/image.jpg";
     $result["haptic"] = $dataDirectoryRelational."/".$id."/haptic.wav";
   } catch (Exception $e) {

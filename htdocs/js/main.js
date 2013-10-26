@@ -56,28 +56,28 @@ var MainController = {
   },
 
   appendProject: function(project) {
-      var id = project.id;
-      var imageURL = project.image;
-      var hapticURL = project.haptic;
+    var id = project.id;
+    var imageURL = project.image;
+    var hapticURL = project.haptic;
 
-      var image = $(document.createElement("img"));
-      image.attr("src", imageURL);
-      image.addClass("image");
-      var label = $(document.createElement("div"));
-      label.addClass("project-name");
-      label.text(id);
+    var image = $(document.createElement("img"));
+    image.attr("src", imageURL);
+    image.addClass("image");
+    var label = $(document.createElement("div"));
+    label.addClass("project-name");
+    label.text(id);
 
-      var li = $(document.createElement("li"));
-      li.append(image);
-      li.append(label);
-      li.attr("id", id);
-      li.attr("image", imageURL);
-      li.attr("haptic", hapticURL);
-      li.click(MainController.play);
-      $("#project-list").append(li);
+    var li = $(document.createElement("li"));
+    li.append(image);
+    li.append(label);
+    li.attr("id", id);
+    li.attr("image", imageURL);
+    li.attr("haptic", hapticURL);
+    li.click(MainController.play);
+    $("#project-list").append(li);
 
-      HapticsController.load(hapticURL);
-      MainController.id_list.push(id);
+    HapticsController.load(hapticURL);
+    MainController.id_list.push(id);
   },
 
   play: function(e) {
@@ -136,6 +136,8 @@ var MainController = {
       return;
     }
 
+    $("#wait").css("display", "block");
+
     var formData = new FormData();
     formData.append("title", title);
     formData.append("image", $("#uploaded-image").get(0).file);
@@ -152,8 +154,28 @@ var MainController = {
         console.log(result)
         MainController.appendProject(result);
       },
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
-        alert(textStatus+":"+MLHttpRequest.responseText);
+
+      xhr : function(){
+        var XHR = $.ajaxSettings.xhr();
+        if(XHR.upload) {
+          XHR.upload.addEventListener('progress',function(e) {
+            var progress = parseInt(e.loaded/e.total*10000)/100;
+            $("#progress-label").text("uploaded:"+e.loaded+"/"+e.total);
+            $("#progress-bar").css("width", progress+"%");
+          });
+        }
+        return XHR;
+      },
+
+      error: function(xhr, textStatus, errorThrown) {
+        alert(textStatus+":"+xhr.responseText);
+      },
+
+      complete: function(xhr, status) {
+        $("#wait").css("display", "none");
+        $("#uploaded-title").val("");
+        $("#uploaded-image").css("display", "none");
+        $("#uploaded-haptic").css("display", "none");
       }
     });
   },

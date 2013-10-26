@@ -44,5 +44,11 @@
       </div>
     </div>
     <?php include('footer.php.inc'); ?>
+    <div id="wait">
+      <div id="progress">
+        <label id="progress-label">please wait</label>
+        <div id="progress-bar">uploading..</div>
+      </div>
+    </div>
   </body>
 </html>
